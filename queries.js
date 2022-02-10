@@ -3,11 +3,8 @@ const jwt = require("jsonwebtoken");
 
 const Pool = require('pg').Pool
 const pool = new Pool({
-    user: 'martin',
-    host: 'localhost',
-    database: 'twatter',
-    password: 'password',
-    port: 3333,
+    connectionString: process.env.DATABASE_URL,
+    ssl: process.env.IS_LOCAL ? undefined : { rejectUnauthorized : false },
 })
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
