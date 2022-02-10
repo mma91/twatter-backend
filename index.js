@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require("cors");
@@ -6,6 +7,8 @@ const db = require('./queries')
 const port = 3000
 const { secret } = require("./config.js")
 const jwt = require("jsonwebtoken");
+
+// console.log('PROCESS ENV', process.env);
 
 app.use(bodyParser.json())
 app.use(
